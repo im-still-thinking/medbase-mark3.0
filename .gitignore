@@ -2,3 +2,4 @@ venv
 .env
 secrets.toml
 .DS_Store
+.devcontainer
