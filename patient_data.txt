@@ -1,0 +1,89 @@
+### Patient Report 1
+Patient Name: John Doe
+Diagnosis Date: 2020-01-15
+Conditions: Type 2 Diabetes
+Symptoms: Frequent urination, excessive thirst, fatigue
+Medications: Metformin 500mg, Insulin 10 units/day
+Doctor Notes: Recommended low-carb diet and exercise regimen.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report1.txt
+
+### Patient Report 2
+Patient Name: John Doe
+Diagnosis Date: 2020-08-12
+Conditions: Hypertension
+Symptoms: Occasional dizziness, mild headaches
+Medications: Lisinopril 10mg daily
+Doctor Notes: Advised to monitor blood pressure at home and reduce sodium intake.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report2.txt
+
+### Patient Report 3
+Patient Name: John Doe
+Diagnosis Date: 2021-03-18
+Conditions: High Cholesterol
+Symptoms: None reported
+Medications: Atorvastatin 20mg daily
+Doctor Notes: Advised lifestyle changes, including regular physical activity and reduced saturated fat intake.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report3.txt
+
+### Patient Report 4
+Patient Name: John Doe
+Diagnosis Date: 2021-09-10
+Conditions: Obesity
+Symptoms: Joint pain, difficulty performing physical tasks
+Medications: None
+Doctor Notes: Referred to a dietitian and enrolled in a weight management program.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report4.txt
+
+### Patient Report 5
+Patient Name: John Doe
+Diagnosis Date: 2022-02-25
+Conditions: Diabetic Retinopathy (mild stage)
+Symptoms: Blurred vision
+Medications: None specific, advised strict diabetes management
+Doctor Notes: Referred to an ophthalmologist for regular retinal scans.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report5.txt
+
+### Patient Report 6
+Patient Name: John Doe
+Diagnosis Date: 2022-10-30
+Conditions: Sleep Apnea
+Symptoms: Loud snoring, excessive daytime sleepiness
+Medications: None
+Doctor Notes: Prescribed CPAP therapy; weight loss stressed as a critical measure.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report6.txt
+
+### Patient Report 7
+Patient Name: John Doe
+Diagnosis Date: 2023-04-15
+Conditions: Chronic Back Pain
+Symptoms: Persistent lower back pain
+Medications: Ibuprofen 400mg as needed
+Doctor Notes: Referred to physical therapy and advised ergonomic adjustments at work.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report7.txt
+
+### Patient Report 8
+Patient Name: John Doe
+Diagnosis Date: 2023-07-18
+Conditions: Gastroesophageal Reflux Disease (GERD)
+Symptoms: Heartburn, regurgitation
+Medications: Omeprazole 20mg daily
+Doctor Notes: Advised to avoid late-night meals, caffeine, and spicy foods.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report8.txt
+
+### Patient Report 9
+Patient Name: John Doe
+Diagnosis Date: 2023-10-02
+Conditions: Vitamin D Deficiency
+Symptoms: Bone pain, fatigue
+Medications: Vitamin D3 supplements 2000 IU daily
+Doctor Notes: Advised sunlight exposure and regular follow-up blood tests.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report9.txt
+
+### Patient Report 10
+Patient Name: John Doe
+Diagnosis Date: 2024-01-20
+Conditions: Anxiety Disorder
+Symptoms: Restlessness, difficulty sleeping
+Medications: Sertraline 50mg daily
+Doctor Notes: Weekly therapy sessions recommended, along with stress-reducing activities like yoga or meditation.
+report_url: https://gateway.lighthouse.storage/ipfs/bafybeidehn7bp7ruumz4ir3iyb3hpxucwsqsogkb7qa24wa7eglfcthcqu/report10.txt
