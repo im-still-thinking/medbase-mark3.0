@@ -3,6 +3,7 @@ import google.generativeai as genai
 import time
 import re
 import requests
+import ast
 
 from dotenv import load_dotenv
 
@@ -13,7 +14,7 @@ load_dotenv()
 
 # Initialize Firebase Admin SDK (only once)
 if not firebase_admin._apps:
-    cred = credentials.Certificate(st.secrets["FIREBASE_CREDENTIALS"])
+    cred = credentials.Certificate(ast.literal_eval(st.secrets["FIREBASE_CREDENTIALS"]))
     firebase_admin.initialize_app(cred)
 
 # Firestore client
@@ -149,7 +150,8 @@ def main():
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
             if message["role"] == "assistant" and "report_url" in message:
-                st.pill(f"📄 Report URL: {message['report_url']}")
+                # st.markdown(f"📄 [Report URL]({report_url})")
+                st.markdown(f"📄 Report URL: {message['report_url']}")
     
     # Chat input
     if question := st.chat_input("Ask a question about the patient"):
@@ -177,6 +179,7 @@ def main():
             report_url = extract_report_url(text_data)
             if report_url:
                 st.pills(label="Report URL", options=[report_url])
+                # st.markdown(f"📄 [Report URL]({report_url})")
                 st.session_state.messages.append({
                     "role": "assistant", 
                     "content": response,
