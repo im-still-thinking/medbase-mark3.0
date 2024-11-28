@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 import time
 import re
-import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
