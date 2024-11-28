@@ -2,22 +2,62 @@ import streamlit as st
 import google.generativeai as genai
 import time
 import re
+import requests
 
 from dotenv import load_dotenv
 
+import firebase_admin
+from firebase_admin import credentials, firestore
+
 load_dotenv()
+
+# Initialize Firebase Admin SDK (only once)
+if not firebase_admin._apps:
+    cred = credentials.Certificate(st.secrets["FIREBASE_CREDENTIALS"])
+    firebase_admin.initialize_app(cred)
+
+# Firestore client
+db = firestore.client()
 
 # Configure Gemini API
 GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
 
-def load_text_data():
-    """Load content from text file"""
+# def load_text_data():
+#     """Load content from text file"""
+#     try:
+#         with open("patient_data.txt", "r") as file:
+#             return file.read()
+#     except FileNotFoundError:
+#         st.error("Patient data file not found!")
+#         return None
+
+def fetch_ipfs_text(cid):
+    """
+    Fetch text data from IPFS using the given CID
+    
+    Args:
+        cid (str): Content Identifier for the IPFS resource
+    
+    Returns:
+        str or None: Text content from IPFS, or None if retrieval fails
+    """
     try:
-        with open("patient_data.txt", "r") as file:
-            return file.read()
-    except FileNotFoundError:
-        st.error("Patient data file not found!")
+        # Construct the full IPFS gateway URL
+        ipfs_url = f"https://gateway.lighthouse.storage/ipfs/{cid}"
+        
+        # Fetch the content
+        response = requests.get(ipfs_url, timeout=10)
+        
+        # Check if request was successful
+        if response.status_code == 200:
+            return response.text
+        else:
+            st.error(f"Failed to retrieve IPFS content. Status code: {response.status_code}")
+            return None
+    
+    except requests.RequestException as e:
+        st.error(f"Error fetching IPFS content: {e}")
         return None
 
 def get_gemini_response(question, context):
@@ -38,14 +78,66 @@ def extract_report_url(text):
     url_match = re.search(r'https://gateway\.lighthouse\.storage/ipfs/[^\s]+', text)
     return url_match.group(0) if url_match else None
 
+
+def check_phone_number(phone_number):
+    """
+    Check if a document with the phone number exists and retrieve the last hash
+    
+    Args:
+        phone_number (str): Phone number to search for as document ID
+    
+    Returns:
+        str or None: Hash from the last object in cid array, or None if not found
+    """
+    try:
+        # Reference the document with phone number as ID
+        doc_ref = db.collection('users').document(phone_number)
+        doc = doc_ref.get()
+        
+        # Check if document exists
+        if doc.exists:
+            user_data = doc.to_dict()
+            
+            # Check if 'cid' array exists and is not empty
+            if 'cid' in user_data and user_data['cid']:
+                # Return the hash from the last object in the cid array
+                return user_data['cid'][-1].get('hash')
+        
+        return None
+    
+    except Exception as e:
+        st.error(f"Error checking phone number: {e}")
+        return None
+    
 def main():
     st.title("MedBase AI")
+
+    # Phone Number Verification Step
+    if 'phone_verified' not in st.session_state:
+        st.session_state.phone_verified = False
+    
+    if not st.session_state.phone_verified:
+        st.subheader("Phone Number Verification")
+        phone_number = st.text_input("Please enter your phone number")
+        
+        if st.button("Verify"):
+            # Check phone number document in Firestore
+            user_hash = check_phone_number(phone_number)
+            
+            if user_hash:
+                st.session_state.phone_verified = True
+                st.session_state.user_hash = user_hash
+                st.success(f"Phone number verified! Retrieved hash: {user_hash}")
+            else:
+                st.warning("No user found with this phone number.")
+        
+        return
     
     # Load the text data
-    text_data = load_text_data()
-    print(text_data)
+    text_data = fetch_ipfs_text(st.session_state.user_hash)
     
     if text_data is None:
+        st.error("Failed to retrieve patient data.")
         return
     
     # Initialize chat history
