@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configure Gemini API
-GOOGLE_API_KEY = os.environ["GEMINI_API_KEY"] or st.secrets["GEMINI_API_KEY"]
+GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
 
 def load_text_data():
