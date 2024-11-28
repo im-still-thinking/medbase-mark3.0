@@ -1,4 +1,5 @@
 # cdaltair==5.5.0
+python-dotenv
 annotated-types==0.7.0
 attrs==24.2.0
 blinker==1.9.0
