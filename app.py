@@ -1,13 +1,12 @@
-import streamlit as st
-import google.generativeai as genai
-import time
-import re
-import requests
 import ast
-
-from dotenv import load_dotenv
+import re
+import time
 
 import firebase_admin
+import google.generativeai as genai
+import requests
+import streamlit as st
+from dotenv import load_dotenv
 from firebase_admin import credentials, firestore
 
 load_dotenv()
@@ -15,10 +14,14 @@ load_dotenv()
 # Initialize Firebase Admin SDK (only once)
 if not firebase_admin._apps:
     cred = credentials.Certificate(ast.literal_eval(st.secrets["FIREBASE_CREDENTIALS"]))
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(cred, name='medbase')
+else:
+    # Get the existing app
+    firebase_admin.get_app(name='medbase')
 
 # Firestore client
-db = firestore.client()
+app = firebase_admin.get_app(name='medbase')
+db = firestore.client(app=app)
 
 # Configure Gemini API
 GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
